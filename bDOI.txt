@@ -1,0 +1,34 @@
+#install.packages("xlsx")
+
+library(xlsx)
+library(stringr)
+library(pracma)
+
+cad <- readLines(file.choose())
+n <- length(cad)
+cat(" Líneas leidas : ",n,"\n")
+
+options(show.error.messages = FALSE) # no mostrar errores
+
+vec <- c()
+cont=1
+while (cont <= n){
+x <- strsplit(cad[cont], split = " ")
+for (i in 1:length(x[[1]])) {
+	try(
+	if( str_detect(x[[1]][i], "doi:")){
+		print(x[[1]][i])
+		vec <- c(vec,x[[1]][i])
+	})
+	
+}
+cont=cont+1
+}
+
+write.xlsx(vec, file="C:/Users/yo/Desktop/g_doi.xlsx", sheetName="DOI", append=FALSE)
+
+
+
+
+
+

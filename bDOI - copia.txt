@@ -1,0 +1,21 @@
+
+library(stringr)
+library(pracma)
+
+cad <- readLines(file.choose())
+
+x <- strsplit(cad[3], split = " ")
+
+
+for (i in 1:length(x[[1]])) {
+	if( str_detect(x[[1]][i], "doi:")){
+		print(x[[1]][i])
+	}
+	
+}
+
+
+
+
+
+
